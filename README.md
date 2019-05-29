@@ -1,17 +1,15 @@
-# lims_report_upload_v2.0
 
 
-
-## 简介
+# 简介
 `Lims_report_uploader`是用于将结题报告从天津或南京集群传到lims系统的工具.
 
 v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过命令行的方式释放数据。详细使用方法如下。
 
-## 版本
+# 版本
 ![v2.0 ](https://raw.githubusercontent.com/lidanqing123/lims_report_upload_v1.2/master/README.md)
    
 
-## 集群路径
+# 集群路径
 
 天津集群
 ```
@@ -22,7 +20,7 @@ v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过
 /NJPROJ2/MICRO/share/software/Anaconda/anaconda3/bin/python  /NJPROJ2/MICRO/PROJ/lidanqing/lims/lims_report_upload_v2.0/Lims_report_uploader -h
 ```
 
-## 使用方法
+# 使用方法
 
 * 首先,需要通过`init`命令初始化配置自己的lims账号和密码,此后,使用不需要再重新配置.
 * 使用`R`命令来上传结题报告;
@@ -70,7 +68,7 @@ Example:
 ```
 
 
-### 初始化lims账号信息
+## 初始化lims账号信息
 初始化lims账号信息直接使用`init`命令
 ```
 $ /PUBLIC/software/MICRO/Anaconda/anaconda3/bin/python Lims_report_uploader.py init
@@ -92,7 +90,7 @@ Example:
 ```
 
 
-### SOP编号查询
+## SOP编号查询
 
 通过项目分期编号,可以使用`search`命令查询可选的SOP
 
@@ -136,7 +134,7 @@ Example:
 ```
 
 
-### 结题报告上传
+## 结题报告上传
 报告上传是此程序的主要功能. 需要配置的参数相对较多:
 查看帮助信息可使用`-h`参数:
 
@@ -182,7 +180,7 @@ Example:
 
 ```
 
-### QC报告上传
+## QC报告上传
 查看帮助信息，命令：
 ```
 /PUBLIC/software/MICRO/Anaconda/anaconda3/bin/python ./Lims_report_uploader Q -h
@@ -214,7 +212,7 @@ Example:
     Lims_report_uploader.py Q --input P101SC18072239-01-B1-3.zip --stage_code P101SC18072239-01-F002 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
 
-### Mapping 报告上传
+## Mapping 报告上传
 
 查看帮助信息，命令：
 ```
@@ -247,7 +245,7 @@ Example:
     Lims_report_uploader.py M --input P101SC18072239-01-B1-3.zip --stage_code P101SC18072239-01-F002 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
 
-### 数据释放
+## 数据释放
 查看帮助信息，命令：
 ```
 /PUBLIC/software/MICRO/Anaconda/anaconda3/bin/python ./Lims_report_uploader D -h
@@ -278,9 +276,9 @@ Example:
 
 
 
-## FAQ
+# FAQ
 
-### 1. UnicodeEncodeError: 'charmap' codec can't encode characters in position 85-100
+## 1. UnicodeEncodeError: 'charmap' codec can't encode characters in position 85-100
 ![](https://raw.githubusercontent.com/lidanqing123/Lims__report_uploader/master/QQ%E5%9B%BE%E7%89%8720181226200832.png)
 
 假如出现这个报错.可能是linux系统的stdout编码不对.可通过如下命令查看.
