@@ -5,6 +5,8 @@
 ## 简介
 `Lims_report_uploader`是用于将结题报告从天津或南京集群传到lims系统的工具.
 
+v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过命令行的方式释放数据。详细使用方法如下。
+
 ## 版本
 ![v2.0 ](https://raw.githubusercontent.com/lidanqing123/lims_report_upload_v1.2/master/README.md)
    
