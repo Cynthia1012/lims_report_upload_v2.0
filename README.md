@@ -330,5 +330,14 @@ Example:
 export LANG='zh_CN.UTF-8'
 ```
 
+## 2 因为环境变量问题无法运行,又不想修改`~/.bash_profile`和`~/.bash_profile `里面的环境变量
+
+可以通过下面的方式解决：
+```
+export PYTHONPATH=""
+export PATH=""
+export LD_LIBRARY_PATH=""
+/TJPROJ1/MICRO/lidanqing/lims/lims_report_upload_v2.0/Lims_report_uploader -h
+```
 
 
