@@ -5,6 +5,12 @@
 
 v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过命令行的方式释放数据。详细使用方法如下。
 
+# 更新
+1 初始化时，发件邮箱配置改为可选（考虑到一些集群节点无法连接外网），若不配置则无法从集群发送邮件；
+2 根据业务逻辑需要，将数据释放和报告上传都放在‘R’命令下执行，要求上传报告的同时释放数据；
+3 释放数据时集群地点增加配置参数`--jq_local`或`-j`，但是，优先会根据集群服务器IP来判断；
+4 `D`命令改为用于重新释放数据
+
 # 版本
 ![v2.0 ](https://raw.githubusercontent.com/lidanqing123/lims_report_upload_v1.2/master/README.md)
    
@@ -23,9 +29,9 @@ v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过
 # 使用方法
 
 * 首先,需要通过`init`命令初始化配置自己的lims账号和密码,此后,使用不需要再重新配置.
-* 使用`R`命令来上传结题报告;
+* 使用`R`命令来上传结题报告,同时释放数据;
 * 如果不清楚SOP编号,可通过`search`命令查询可选SOP
-* 释放数据使用’D’命令;
+* 重新释放数据使用’D’命令;
 
 ```
 /PUBLIC/software/MICRO/Anaconda/anaconda3/bin/python Lims_report_uploader.py -h
@@ -37,9 +43,9 @@ usage: Lims_report_uploader [-h] [-V] {init,search,R,Q,M,D} ...
 Description:
 这个脚本用于将结题报告从集群传到lims系统中.
     1 首先,需要通过’init’命令初始化配置lims账号和密码;
-    2 上传结题报告使用’R’命令;
+    2 上传结题报告,同时释放数据，使用’R’命令;
     3 如果不清楚SOP编号,可通过’search’命令查询可选SOP
-    4 释放数据使用’D’命令;
+    4 重新释放数据使用’D’命令;
 
 author: lidanqing@novogene.com
 version:  2.0
@@ -49,10 +55,10 @@ positional arguments:
                         sub-command
     init                开始初始化lims账户信息
     search              查询项目SOP
-    R                   上传结题报告
+    R                   上传结题报告,同时释放数据
     Q                   上传QC报告
     M                   上传Mapping报告
-    D                   释放数据
+    D                   重新释放数据
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -134,8 +140,8 @@ Example:
 ```
 
 
-## 结题报告上传
-报告上传是此程序的主要功能. 需要配置的参数相对较多:
+## 结题报告上传,同时释放数据
+报告上传,同时释放数据是此程序的主要功能. 需要配置的参数相对较多:
 查看帮助信息可使用`-h`参数:
 
 查看帮助信息，命令：
@@ -148,19 +154,24 @@ Example:
 ```
 输出如下：
 ```
-usage: Lims_report_uploader R [-h] -i file -s STAGECODE -r {Q,M,R} -l file
-                                 -d num --SOP SOP [-m REMARK] [-e EMAIL]
+usage: Lims_report_uploader R [-h] -i file -s STAGECODE -p RELEASE_PATH
+                              [-j {nj,tj}] -l file -d num --SOP SOP
+                              [-m REMARK] [-e EMAIL]
 
 Description:
-    'R'是本脚本最核心的功能,用于上传结题报告.
+    'R'是本脚本最核心的功能,用于上传结题报告,同时释放数据.
 
 optional arguments:
   -h, --help            show this help message and exit
   -i file, --input file
-                        集群中报告文件的路径, 只支持'.zip', '.tar.gz', '.gz',
+                        集群中结题报告文件的路径, 只支持'.zip', '.tar.gz', '.gz',
                         '.rar'等类型的压缩文件
   -s STAGECODE, --stage_code STAGECODE
                         项目分期编号
+  -p RELEASE_PATH, --path RELEASE_PATH
+                        集群中释放数据的路径
+  -j {nj,tj}, --jq_local {nj,tj}
+                        集群所在地, "nj":南京集群, "tj":天津集群, 可选。默认根据集群服务器IP判断集群所在地。
   -l file, --sample_list file
                         样本列表，每行一个样本诺和编号
   -d num, --total_data num
@@ -174,9 +185,9 @@ optional arguments:
                         ovogene.com;liuchen@novogene.com".默认为空
 
 Example:
-    Lims_report_uploader.py R -i P101SC18072239-01-B1-3.zip -s P101SC18072239-01-F002 -l samplelist.txt -d 2 --SOP SOPMC00039,SOPMC00040 -m "正常" -e "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader R -i P101SC18072239-01-B1-3.zip -p path2release -j tj -s P101SC18072239-01-F002 -l samplelist.txt -d 2 --SOP SOPMC00039,SOPMC00040 -m "正常" -e "lidanqing@novogene.com;liuchen@novogene.com"
 
-    Lims_report_uploader.py R --input P101SC18072239-01-B1-3.zip --stage_code P101SC18072239-01-F002  --sample_list samplelist.txt --total_data 2 --SOP SOPMC00039,SOPMC00040 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader R --input P101SC18072239-01-B1-3.zip --path path2release --jq_local tj  --stage_code P101SC18072239-01-F002 --sample_list samplelist.txt --total_data 2 --SOP SOPMC00039,SOPMC00040 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
 
 ```
 
@@ -292,16 +303,20 @@ Example:
 ```
 输出如下：
 ```
-usage: Lims_report_uploader D [-h] -p file -s STAGECODE [-m REMARK] [-e EMAIL]
+usage: Lims_report_uploader D [-h] -p RELEASE_PATH -s STAGECODE [-j {nj,tj}]
+                              [-m REMARK] [-e EMAIL]
 
 Description:
-    'D'的功能是用释放数据.
+    'D'的功能是用于重新释放数据.
 
 optional arguments:
   -h, --help            show this help message and exit
-  -p file, --path file  集群中释放数据的路径
+  -p RELEASE_PATH, --path RELEASE_PATH
+                        集群中释放数据的路径
   -s STAGECODE, --stage_code STAGECODE
                         项目分期编号
+  -j {nj,tj}, --jq_local {nj,tj}
+                        集群所在地, "nj":南京集群, "tj":天津集群, 可选。默认根据集群服务器IP判断集群所在地。
   -m REMARK, --remark REMARK
                         备注信息,默认为空
   -e EMAIL, --email EMAIL
