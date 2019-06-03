@@ -154,9 +154,9 @@ Example:
 ```
 输出如下：
 ```
-usage: Lims_report_uploader R [-h] -i file -s STAGECODE -p RELEASE_PATH
-                              [-j {nj,tj}] -l file -d num --SOP SOP
-                              [-m REMARK] [-e EMAIL]
+usage: Lims_report_uploader.py R [-h] -i file -s STAGECODE -p RELEASE_PATH
+                                 [-j {nj,tj}] [-l file] -d num --SOP SOP
+                                 [-m REMARK] [--comments COMMENTS] [-e EMAIL]
 
 Description:
     'R'是本脚本最核心的功能,用于上传结题报告,同时释放数据.
@@ -179,15 +179,16 @@ optional arguments:
   --SOP SOP             SOP编号,多个SOP编号的话以英文字符逗号分开,like:"SOPMC00038,SOPMC00039".
                         配置前可以用过'search'命令查询可选SOP.
   -m REMARK, --remark REMARK
-                        备注信息,默认为空
+                        结题报告备注信息,默认为空
+  --comments COMMENTS   释放数据备注信息,默认为空
   -e EMAIL, --email EMAIL
                         收件人邮箱,用于接收报告上传后的状态信息,可设置多个收件人(用";"号分隔).例如:"lidanqing@n
                         ovogene.com;liuchen@novogene.com".默认为空
 
 Example:
-    Lims_report_uploader R -i P101SC18072239-01-B1-3.zip -p path2release -j tj -s P101SC18072239-01-F002 -l samplelist.txt -d 2 --SOP SOPMC00039,SOPMC00040 -m "正常" -e "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader.py R -i P101SC18072239-01-B1-3.zip -p path2release -j tj -s P101SC18072239-01-F002 -l samplelist.txt -d 2 --SOP SOPMC00039,SOPMC00040 -m "正常" -e "lidanqing@novogene.com;liuchen@novogene.com"
 
-    Lims_report_uploader R --input P101SC18072239-01-B1-3.zip --path path2release --jq_local tj  --stage_code P101SC18072239-01-F002 --sample_list samplelist.txt --total_data 2 --SOP SOPMC00039,SOPMC00040 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader.py R --input P101SC18072239-01-B1-3.zip --path path2release --jq_local tj  --stage_code P101SC18072239-01-F002 --sample_list samplelist.txt --total_data 2 --SOP SOPMC00039,SOPMC00040 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
 
 ```
 
