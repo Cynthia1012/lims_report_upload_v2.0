@@ -38,13 +38,14 @@ v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过
 * 使用`R`命令来上传结题报告,同时释放数据;
 * 如果不清楚SOP编号,可通过`search`命令查询可选SOP
 * 重新释放数据使用’D’命令;
+* 项目分期结题，释放，交付状态等信息可以使用’stage_info’命令;
 
 ```
 /PUBLIC/software/MICRO/Anaconda/anaconda3/bin/python Lims_report_uploader.py -h
 ```
 
 ```
-usage: Lims_report_uploader [-h] [-V] {init,search,R,Q,M,D} ...
+usage: Lims_report_uploader.py [-h] [-V] {init,search,R,Q,M,D,stage_info} ...
 
 Description:
 这个脚本用于将结题报告从集群传到lims系统中.
@@ -52,12 +53,13 @@ Description:
     2 上传结题报告,同时释放数据，使用’R’命令;
     3 如果不清楚SOP编号,可通过’search’命令查询可选SOP
     4 重新释放数据使用’D’命令;
+    5 项目分期结题，释放，交付状态等信息可以使用’stage_info’命令;
 
 author: lidanqing@novogene.com
 version:  2.0
 
 positional arguments:
-  {init,search,R,Q,M,D}
+  {init,search,R,Q,M,D,stage_info}
                         sub-command
     init                开始初始化lims账户信息
     search              查询项目SOP
@@ -65,18 +67,20 @@ positional arguments:
     Q                   上传QC报告
     M                   上传Mapping报告
     D                   重新释放数据
+    stage_info          查询项目信息
 
 optional arguments:
   -h, --help            show this help message and exit
   -V, --version         show program's version number and exit
 
 Example:
-            Lims_report_uploader init -h
-            Lims_report_uploader search -h
-            Lims_report_uploader R -h
-            Lims_report_uploader Q -h
-            Lims_report_uploader M -h
-            Lims_report_uploader D -h
+            Lims_report_uploader.py init -h
+            Lims_report_uploader.py search -h
+            Lims_report_uploader.py R -h
+            Lims_report_uploader.py Q -h
+            Lims_report_uploader.py M -h
+            Lims_report_uploader.py D -h
+            Lims_report_uploader.py stage_info -h
 ```
 
 
@@ -336,6 +340,27 @@ Example:
     Lims_report_uploader D --path path2release --stage_code P101SC18072239-01-F002 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
 
+## 查看项目分期状态
+查看帮助信息，命令：
+```
+/PUBLIC/software/MICRO/Anaconda/anaconda3/bin/python ./Lims_report_uploader stage_info -h
+```
+输出如下：
+```
+usage: Lims_report_uploader.py stage_info [-h] -s STAGECODE
+
+Description:
+    提供项目分期编号,使用'stage_info'命令,可查询此项目交付信息.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s STAGECODE, --stage_code STAGECODE
+                        项目分期编号
+
+Example:
+    Lims_report_uploader.py stage_info -s  P101SC18072239-01-F002
+    Lims_report_uploader.py stage_info --stage_code  P101SC18072239-01-F002
+```
 
 
 # FAQ
