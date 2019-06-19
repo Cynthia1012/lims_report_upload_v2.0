@@ -1,22 +1,32 @@
 
 <h2 id="目录">目录</h2>
-    *   [简介](#简介)
-    *   [更新](#更新)
-    *   [版本](#版本)
-    *   [集群路径](#集群路径)
-    *   [使用方法](#使用方法)
-        *   [初始化lims账号信息](#初始化lims账号信息)
-	*   [SOP编号查询](#SOP编号查询)
-	*   [结题报告上传,同时释放数据](#结题报告上传)
-	*   [QC报告上传](#QC报告上传)
-	*   [Mapping 报告上传](#Mapping)
-	*   [重新释放数据](#重新释放数据)
-	*   [查看项目分期状态](#查看项目分期状态)
-    *   [FAQ](#FAQ)
-        *   [脚本环境](#FAQ1)
-	    *   [1. UnicodeEncodeError: 'charmap' codec can't encode characters in position 85-100](#FAQ1.1)
-	    *   [2. 因为环境变量问题无法运行,又不想修改`~/.bash_profile`和`~/.bash_profile `里面的环境变量](#FAQ1.2)
-        *   [lims返回值](#FAQ2)
+
+
+
+	<ul>
+	<li><a href="#简介">简介</a></li>
+	<li><a href="#更新">更新</a></li>
+	<li><a href="#版本">版本</a></li>
+	<li><a href="#集群路径">集群路径</a></li>
+	<li><a href="#使用方法">使用方法</a>
+		<ul>
+			<li><a href="#初始化lims账号信息">初始化lims账号信息</a></li>
+			<li><a href="#SOP编号查询">SOP编号查询</a></li>
+			<li><a href="#结题报告上传">结题报告上传,同时释放数据</a></li>
+			<li><a href="#QC报告上传">QC报告上传</a></li>
+			<li><a href="#Mapping">Mapping 报告上传</a></li>
+			<li><a href="#重新释放数据">重新释放数据</a></li>
+			<li><a href="#查看项目分期状态">查看项目分期状态</a></li>
+		</ul> 
+	</li>
+	<li><a href="#FAQ">FAQ</a>
+		<ul>
+			<li><a href="#FAQ1">脚本环境</a></li>
+			<li><a href="#FAQ2">lims返回值</a></li>
+		</ul> 
+	</li>
+
+	</ul> 
 
 
 <h2 id="简介">简介</h2>
