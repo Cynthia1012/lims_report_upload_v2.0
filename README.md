@@ -1,10 +1,31 @@
 
+<h2 id="目录">目录</h2>
+    *   [简介](#简介)
+    *   [更新](#更新)
+    *   [版本](#版本)
+    *   [集群路径](#集群路径)
+    *   [使用方法](#使用方法)
+        *   [初始化lims账号信息](#初始化lims账号信息)
+	*   [SOP编号查询](#SOP编号查询)
+	*   [结题报告上传,同时释放数据](#结题报告上传)
+	*   [QC报告上传](#QC报告上传)
+	*   [Mapping 报告上传](#Mapping)
+	*   [重新释放数据](#重新释放数据)
+	*   [查看项目分期状态](#查看项目分期状态)
+    *   [FAQ](#FAQ)
+        *   [脚本环境](#FAQ1)
+	    *   [1. UnicodeEncodeError: 'charmap' codec can't encode characters in position 85-100](#FAQ1.1)
+	    *   [2. 因为环境变量问题无法运行,又不想修改`~/.bash_profile`和`~/.bash_profile `里面的环境变量](#FAQ1.2)
+        *   [lims返回值](#FAQ2)
 
+
+<h2 id="简介">简介</h2>
 # 简介
 `Lims_report_uploader`是用于将结题报告从天津或南京集群传到lims系统的工具.
 
 v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过命令行的方式释放数据。详细使用方法如下。
 
+<h2 id="更新">更新</h2>
 # 更新
 
 2019-06-18
@@ -17,10 +38,11 @@ v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过
 > 3. 增加释放数据时集群地点配置参数`--jq_local`或`-j`，但是，优先会根据集群服务器IP来判断；
 > 4. ’D‘命令改为用于重新释放数据
 
+<h2 id="版本">版本</h2>
 # 版本
-![v2.0 ](https://raw.githubusercontent.com/lidanqing123/lims_report_upload_v1.2/master/README.md)
+![v2.0 ](https://lidanqing123.github.io/lims_report_upload_v2.0/)
    
-
+<h2 id="集群路径">集群路径</h2>
 # 集群路径
 
 天津集群
@@ -32,6 +54,7 @@ v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过
 /NJPROJ2/MICRO/share/software/Anaconda/anaconda3/bin/python  /NJPROJ2/MICRO/PROJ/lidanqing/lims/lims_report_upload_v2.0/Lims_report_uploader -h
 ```
 
+<h2 id="使用方法">使用方法</h2>
 # 使用方法
 
 * 首先,需要通过`init`命令初始化配置自己的lims账号和密码,此后,使用不需要再重新配置.
@@ -83,7 +106,7 @@ Example:
             Lims_report_uploader.py stage_info -h
 ```
 
-
+<h3 id="初始化lims账号信息">初始化lims账号信息</h3>
 ## 初始化lims账号信息
 初始化lims账号信息直接使用`init`命令
 ```
@@ -105,7 +128,7 @@ Example:
 
 ```
 
-
+<h3 id="SOP编号查询">SOP编号查询</h3>
 ## SOP编号查询
 
 通过项目分期编号,可以使用`search`命令查询可选的SOP
@@ -149,7 +172,7 @@ Example:
     Lims_report_uploader search --stage_code  P101SC18072239-01-F002
 ```
 
-
+<h3 id="结题报告上传">结题报告上传,同时释放数据</h3>
 ## 结题报告上传,同时释放数据
 报告上传,同时释放数据是此程序的主要功能. 需要配置的参数相对较多:
 查看帮助信息可使用`-h`参数:
@@ -242,6 +265,7 @@ FKRO170938484-1A
 FKRO170938485-1A
 ```
 
+<h3 id="QC报告上传">QC报告上传</h3>
 ## QC报告上传
 查看帮助信息，命令：
 ```
@@ -274,6 +298,7 @@ Example:
     Lims_report_uploader.py Q --input P101SC18072239-01-B1-3.zip --stage_code P101SC18072239-01-F002 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
 
+<h3 id="Mapping">Mapping 报告上传</h3>
 ## Mapping 报告上传
 
 查看帮助信息，命令：
@@ -306,8 +331,8 @@ Example:
 
     Lims_report_uploader.py M --input P101SC18072239-01-B1-3.zip --stage_code P101SC18072239-01-F002 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
-
-## 数据释放
+<h3 id="重新释放数据">重新释放数据</h3>
+## 重新释放数据
 查看帮助信息，命令：
 ```
 /PUBLIC/software/MICRO/Anaconda/anaconda3/bin/python ./Lims_report_uploader D -h
@@ -340,6 +365,7 @@ Example:
     Lims_report_uploader D --path path2release --stage_code P101SC18072239-01-F002 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
 
+<h3 id="查看项目分期状态">查看项目分期状态</h3>
 ## 查看项目分期状态
 查看帮助信息，命令：
 ```
@@ -362,9 +388,11 @@ Example:
     Lims_report_uploader.py stage_info --stage_code  P101SC18072239-01-F002
 ```
 
-
+<h2 id="FAQ">FAQ</h2>
 # FAQ
 
+<h3 id="FAQ1">脚本环境</h3>
+<h4 id="FAQ1.1">1. UnicodeEncodeError: 'charmap' codec can't encode characters in position 85-100</h4>
 ## 1. UnicodeEncodeError: 'charmap' codec can't encode characters in position 85-100
 ![](https://raw.githubusercontent.com/lidanqing123/Lims__report_uploader/master/QQ%E5%9B%BE%E7%89%8720181226200832.png)
 
@@ -377,6 +405,7 @@ Example:
 export LANG='zh_CN.UTF-8'
 ```
 
+<h4 id="FAQ1.2">2 因为环境变量问题无法运行,又不想修改`~/.bash_profile`和`~/.bash_profile `里面的环境变量</h4>
 ## 2 因为环境变量问题无法运行,又不想修改`~/.bash_profile`和`~/.bash_profile `里面的环境变量
 
 可以通过下面的方式解决：
