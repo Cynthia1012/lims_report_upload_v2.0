@@ -51,7 +51,7 @@ v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过
 > 4. ’D‘命令改为用于重新释放数据
 
 <h2 id="版本">版本</h2>
-![v2.0 ](https://lidanqing123.github.io/lims_report_upload_v2.0/)
+<a href="https://lidanqing123.github.io/lims_report_upload_v2.0/">v2.0 </a>
    
 <h2 id="集群路径">集群路径</h2>
 
