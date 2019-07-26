@@ -35,6 +35,13 @@
 v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过命令行的方式释放数据。详细使用方法如下。
 
 <h2 id="更新">更新</h2>
+2019-07-26
+> 1. 添加对“checkSize.xls”校验, 释放目录下必须有此文件;
+> 2. 在程序路径下添加最新版本的"dirCheckSize2.pl"脚本, 可通过此脚本生成“checkSize.xls”文件;
+> 3. 添加SOP校验，上传结题报告时所给SOP必须都是此产品的SOP;
+> 4. 添加了释放文件个数校验。小文件太多会严重拖慢云交付数据上传速度，因此，对文件数目做了限制。单批次释放目录下，文件个数不能超过500个;
+
+
 2019-06-19
 
 > 1. 修复自动获取集群地函数get_JQLAND,增加重试次数,降低集群网络不稳定的影响，建议运行释放数据时添加'--jq_local' 参数，以保证网络不稳定时可以正常运行；
@@ -88,6 +95,7 @@ Description:
     5 项目分期结题，释放，交付状态等信息可以使用’stage_info’命令;
 
 author: lidanqing@novogene.com
+document: https://lidanqing123.github.io/lims_report_upload_v2.0/
 version:  2.0
 
 positional arguments:
@@ -225,9 +233,10 @@ optional arguments:
                         ovogene.com;liuchen@novogene.com".默认为空
 
 Example:
-    Lims_report_uploader.py R -i P101SC18072239-01-B1-3.zip -p path2release -j tj -s P101SC18072239-01-F002 -l samplelist.txt -d 2 --SOP SOPMC00039,SOPMC00040 -m "正常" -e "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader.py R -i Report-P101SC1807xxxx-01-B1-3.zip -p path2release -j tj -s P101SC1807xxxx-01-F002 -l samplelist.txt -d 2 --SOP SOPMC00039,SOPMC00040 -m "结题报告备注" --comments "释放数据备注" -e "lidanqing@novogene.com;liuchen@novogene.com"
 
-    Lims_report_uploader.py R --input P101SC18072239-01-B1-3.zip --path path2release --jq_local tj  --stage_code P101SC18072239-01-F002 --sample_list samplelist.txt --total_data 2 --SOP SOPMC00039,SOPMC00040 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader.py R --input Report-P101SC1807xxxx-01-B1-3.zip --path path2release --jq_local tj  --stage_code P101SC1807xxxx-01-F002 --sample_list samplelist.txt --total_data 2 --SOP SOPMC00039,SOPMC00040 --remark "结题报告备注" --comments "释放数据备注" --email "lidanqing@novogene.com;liuchen@novogene.com"
+
 
 ```
 
@@ -243,32 +252,6 @@ FKRO170938279-1A
 FKRO170938280-1A
 FKRO170938281-1A
 FKRO170938282-1A
-FKRO170938283-1A
-FKRO170938284-1A
-FKRO170938285-1A
-FKRO170938286-1A
-FKRO170938078-1A
-FKRO170938079-1A
-FKRN172491287-1A
-FKRN172491288-1A
-FKRN172491289-1A
-FKRN172492088-1A
-FKRN172492089-1A
-FKRN172499381-1A
-FKRN172499382-1A
-FKRN172499383-1A
-FKRN172499384-1A
-FKRN172499385-1A
-FKRN172499386-1A
-FKRN172499387-1A
-FKRN172499388-1A
-FKRN172499389-1A
-FKRN172522819-1A
-FKRN172517807-1A
-FKRO170938482-1A
-FKRO170938483-1A
-FKRO170938484-1A
-FKRO170938485-1A
 ```
 
 <h3 id="QC报告上传">QC报告上传</h3>
@@ -298,9 +281,9 @@ optional arguments:
                         ovogene.com;liuchen@novogene.com".默认为空
 
 Example:
-    Lims_report_uploader.py Q -i P101SC18072239-01-B1-3.zip -s P101SC18072239-01-F002 -m "正常"  -e "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader.py Q -i QC-P101SC1807xxxx-01-B1-3.zip  -s P101SC1807xxxx-01-F002 -m "QC报告备注"  -e "lidanqing@novogene.com;liuchen@novogene.com"
 
-    Lims_report_uploader.py Q --input P101SC18072239-01-B1-3.zip --stage_code P101SC18072239-01-F002 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader.py Q --input QC-P101SC1807xxxx-01-B1-3.zip --stage_code P101SC1807xxxx-01-F002 --remark "QC报告备注"  --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
 
 <h3 id="Mapping">Mapping 报告上传</h3>
@@ -320,7 +303,7 @@ Description:
 optional arguments:
   -h, --help            show this help message and exit
   -i file, --input file
-                        集群中QC报告文件的路径, 只支持'.zip', '.tar.gz', '.gz',
+                        集群中mapping报告文件的路径, 只支持'.zip', '.tar.gz', '.gz',
                         '.rar'等类型的压缩文件
   -s STAGECODE, --stage_code STAGECODE
                         项目分期编号
@@ -331,9 +314,9 @@ optional arguments:
                         ovogene.com;liuchen@novogene.com".默认为空
 
 Example:
-    Lims_report_uploader.py M -i P101SC18072239-01-B1-3.zip -s P101SC18072239-01-F002 -m "正常"  -e "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader.py M -i Mapping-P101SC1807xxxx-01-B1-3.zip -s P101SC1807xxxx-01-F002 -m "Mapping报告备注"  -e "lidanqing@novogene.com;liuchen@novogene.com"
 
-    Lims_report_uploader.py M --input P101SC18072239-01-B1-3.zip --stage_code P101SC18072239-01-F002 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader.py M --input Mapping-P101SC1807xxxx-01-B1-3.zip --stage_code P101SC1807xxxx-01-F002 --remark "Mapping报告备注" --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
 <h3 id="重新释放数据">重新释放数据</h3>
 查看帮助信息，命令：
@@ -342,8 +325,8 @@ Example:
 ```
 输出如下：
 ```
-usage: Lims_report_uploader D [-h] -p RELEASE_PATH -s STAGECODE [-j {nj,tj}]
-                              [-m REMARK] [-e EMAIL]
+usage: Lims_report_uploader.py D [-h] -p RELEASE_PATH -s STAGECODE
+                                 [-j {nj,tj}] [-m REMARK] [-e EMAIL]
 
 Description:
     'D'的功能是用于重新释放数据.
@@ -363,9 +346,9 @@ optional arguments:
                         ovogene.com;liuchen@novogene.com".默认为空
 
 Example:
-    Lims_report_uploader D -p path2release -s P101SC18072239-01-F002 -m "正常"  -e "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader.py D -p path2release -s P101SC1807xxxx-01-F002 -m "重新释放数据备注"  -e "lidanqing@novogene.com;liuchen@novogene.com"
 
-    Lims_report_uploader D --path path2release --stage_code P101SC18072239-01-F002 --remark "正常" --email "lidanqing@novogene.com;liuchen@novogene.com"
+    Lims_report_uploader.py D --path path2release --stage_code P101SC1807xxxx-01-F002 --remark "重新释放数据备注" --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
 
 <h3 id="查看项目分期状态">查看项目分期状态</h3>
