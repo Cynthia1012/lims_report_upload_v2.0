@@ -29,12 +29,12 @@
 	
 </div>
 
-<h2 id="简介">简介</h2>
+<h2 id="简介">简介<a href="#目录">[top]</a></h2>
 `Lims_report_uploader`是用于将结题报告从天津或南京集群传到lims系统的工具.
 
 v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过命令行的方式释放数据。详细使用方法如下。
 
-<h2 id="更新">更新</h2>
+<h2 id="更新">更新<a href="#目录">[top]</a></h2>
 2019-07-26
 > 1. 添加对“checkSize.xls”校验, 释放目录下必须有此文件.如果无此文件，将尝试生成“checkSize.xls”，但必须有释放目录的写权限;
 > 2. 在程序路径下添加最新版本的"dirCheckSize2.pl"脚本, 可通过此脚本生成“checkSize.xls”文件;
@@ -57,10 +57,10 @@ v2.0 新增了释放数据功能，可用于在天津集群和南京集群通过
 > 3. 增加释放数据时集群地点配置参数`--jq_local`或`-j`，但是，优先会根据集群服务器IP来判断；
 > 4. ’D‘命令改为用于重新释放数据
 
-<h2 id="版本">版本</h2>
+<h2 id="版本">版本<a href="#目录">[top]</a></h2>
 <p><a href="https://lidanqing123.github.io/lims_report_upload_v2.0/">v2.0 </a></p>
    
-<h2 id="集群路径">集群路径</h2>
+<h2 id="集群路径">集群路径<a href="#目录">[top]</a></h2>
 
 天津集群
 ```
@@ -144,7 +144,7 @@ Example:
 
 ```
 
-<h3 id="SOP编号查询">SOP编号查询</h3>
+<h3 id="SOP编号查询">SOP编号查询<a href="#目录">[top]</a></h3>
 
 通过项目分期编号,可以使用`search`命令查询可选的SOP
 
@@ -187,7 +187,7 @@ Example:
     Lims_report_uploader search --stage_code  P101SC18072239-01-F002
 ```
 
-<h3 id="结题报告上传">结题报告上传,同时释放数据</h3>
+<h3 id="结题报告上传">结题报告上传,同时释放数据<a href="#目录">[top]</a></h3>
 报告上传,同时释放数据是此程序的主要功能. 需要配置的参数相对较多:
 查看帮助信息可使用`-h`参数:
 
@@ -254,7 +254,7 @@ FKRO170938281-1A
 FKRO170938282-1A
 ```
 
-<h3 id="QC报告上传">QC报告上传</h3>
+<h3 id="QC报告上传">QC报告上传<a href="#目录">[top]</a></h3>
 查看帮助信息，命令：
 ```
 /PUBLIC/software/MICRO/Anaconda/anaconda3/bin/python ./Lims_report_uploader Q -h
@@ -286,7 +286,7 @@ Example:
     Lims_report_uploader.py Q --input QC-P101SC1807xxxx-01-B1-3.zip --stage_code P101SC1807xxxx-01-F002 --remark "QC报告备注"  --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
 
-<h3 id="Mapping">Mapping 报告上传</h3>
+<h3 id="Mapping">Mapping 报告上传<a href="#目录">[top]</a></h3>
 
 查看帮助信息，命令：
 ```
@@ -318,7 +318,7 @@ Example:
 
     Lims_report_uploader.py M --input Mapping-P101SC1807xxxx-01-B1-3.zip --stage_code P101SC1807xxxx-01-F002 --remark "Mapping报告备注" --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
-<h3 id="重新释放数据">重新释放数据</h3>
+<h3 id="重新释放数据">重新释放数据<a href="#目录">[top]</a></h3>
 查看帮助信息，命令：
 ```
 /PUBLIC/software/MICRO/Anaconda/anaconda3/bin/python ./Lims_report_uploader D -h
@@ -351,7 +351,7 @@ Example:
     Lims_report_uploader.py D --path path2release --stage_code P101SC1807xxxx-01-F002 --remark "重新释放数据备注" --email "lidanqing@novogene.com;liuchen@novogene.com"
 ```
 
-<h3 id="查看项目分期状态">查看项目分期状态</h3>
+<h3 id="查看项目分期状态">查看项目分期状态<a href="#目录">[top]</a></h3>
 查看帮助信息，命令：
 ```
 /PUBLIC/software/MICRO/Anaconda/anaconda3/bin/python ./Lims_report_uploader stage_info -h
@@ -373,9 +373,9 @@ Example:
     Lims_report_uploader.py stage_info --stage_code  P101SC18072239-01-F002
 ```
 
-<h2 id="FAQ">FAQ</h2>
+<h2 id="FAQ">FAQ<a href="#目录">[top]</a></h2>
 
-<h3 id="FAQ1">脚本环境</h3>
+<h3 id="FAQ1">脚本环境<a href="#目录">[top]</a></h3>
 <h4 id="FAQ1.1">1. UnicodeEncodeError: 'charmap' codec can't encode characters in position 85-100</h4>
 
 ![](https://raw.githubusercontent.com/lidanqing123/Lims__report_uploader/master/QQ%E5%9B%BE%E7%89%8720181226200832.png)
@@ -399,7 +399,7 @@ export PATH=""
 export LD_LIBRARY_PATH=""
 /TJPROJ1/MICRO/lidanqing/lims/lims_report_upload_v2.0/Lims_report_uploader -h
 ```
-<h3 id="FAQ2">ims返回值</h3>
+<h3 id="FAQ2">ims返回值<a href="#目录">[top]</a></h3>
 
 ...
 
